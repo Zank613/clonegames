@@ -1,2 +1,2 @@
-# simple_text_games
-Simple text based games implemented in C99
+# Clonegames
+Clones of popular games from early videogame history.
