@@ -1,1 +1,5 @@
-/.vscode
+.vscode/
+
+tic_tac_toe/tictactoe.exe
+
+hangman/hangman.exe
