@@ -141,33 +141,46 @@ char *allocate_memory_char(size_t length)
     return str;
 }
 
+// Function to ask if the player wants to play again.
+char ask_play_again()
+{
+    char answer;
+    do
+    {
+        printf("\nDo you want to play again? (Y/N): ");
+        scanf(" %c", &answer);
+        answer = toupper(answer); // Convert to uppercase for uniform comparison
+    }
+    while (answer != 'Y' && answer != 'N'); // Ensure valid input
+
+    return answer;
+}
+
 // Starting menu for the game.
 void starting_menu(char *filename)
 {
     char *str = NULL;
     char *copy_str = NULL;
+    char play_again = 'Y'; // Assume the player wants to play initially
     
-    printf("==== Welcome to Hangman ====\n");
-    printf("Press Enter to start or Q to quit.\n");
-
-    char user_str[2]; // To store user input
-    fgets(user_str, sizeof(user_str), stdin); // Read user input
-
-    if (user_str[0] == 'Q' || user_str[0] == 'q') // If the user wants to quit
+    while (play_again == 'Y') // Loop while the player chooses to play
     {
-        exit(EXIT_SUCCESS);
+        str = get_random_word(filename); // Get the random word from the file
+        size_t length = strlen(str);
+
+        copy_str = allocate_memory_char(length); // Allocate memory for the guessed word
+        reset_round(copy_str, length); // Reset the word with underscores
+        play_round(str, copy_str); // Play the round
+
+        // Free allocated memory after the round
+        free(str);
+        free(copy_str);
+        
+        // Ask if the player wants to play again
+        play_again = ask_play_again();
     }
 
-    str = get_random_word(filename); // Get the random word from the file
-    size_t length = strlen(str);
-
-    copy_str = allocate_memory_char(length); // Allocate memory for the guessed word
-    reset_round(copy_str, length); // Reset the word with underscores
-    play_round(str, copy_str); // Play the round
-
-    // Free allocated memory
-    free(str);
-    free(copy_str);
+    printf("\nThanks for playing Hangman!\n");
 }
 
 #endif // HANGMAN_H
