@@ -1,16 +1,12 @@
-#include "hangman_helper.h"
+#include "hangman.h"
 
 int main(void)
 {
-    char *word = get_random_word("words.txt");
-    size_t length = strlen(word);
+    char user_char[2];
+    char *word;
+    char *copy_word;
 
-    while (1)
-    {
-        for (int i = 0; i < length; i++)
-        {
-            printf
-        }
-    }
-    return 0;
+    starting_menu("words.txt");
+
+    return -1;
 }
