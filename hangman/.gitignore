@@ -1,0 +1,4 @@
+# Ignore build files for the hangman folder
+/*.o
+/*.exe
+/*.out
