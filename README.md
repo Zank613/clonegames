@@ -1,5 +1,5 @@
 # Clonegames
-Clones of popular games from early videogame history.
+Clones of popular games from videogame history.
 
 - [Tic-Tac-Toe](https://github.com/Zank613/clonegames/tree/main/tic_tac_toe)
 - [Hangman](https://github.com/Zank613/clonegames/tree/main/hangman)
